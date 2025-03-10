@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker run --rm \
+                    docker run --rm -d \
                         --name ${CONTAINER_NAME} \
                         -p 6767:6767 \
                         -e PUID=${PUID} \
