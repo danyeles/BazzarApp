@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker run --rm -d \
+                    docker run -d \
                         --restart always \
                         --name ${CONTAINER_NAME} \
                         -p 6767:6767 \
