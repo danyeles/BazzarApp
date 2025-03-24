@@ -27,11 +27,11 @@ pipeline {
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
                         -e WEBUI_PORTS=${WEBUI_PORTS} \
-                        -v ${CONFIG_PATH}:/config \\
-                        -v /media/${USERNAME}/Media/Movies:/Movies \\
-                        -v /media/${USERNAME}/Media/MyMovies:/MyMovies \\
-                        -v /media/${USERNAME}/Media/TVShows:/TVShows \\                        
-                        -v /media/${USERNAME}/Media/MyTVShows:/MyTVShows \\
+                        -v ${CONFIG_PATH}:/config \
+                        -v /media/${USERNAME}/Media/Movies:/Movies \
+                        -v /media/${USERNAME}/Media/MyMovies:/MyMovies \
+                        -v /media/${USERNAME}/Media/TVShows:/TVShows \                  
+                        -v /media/${USERNAME}/Media/MyTVShows:/MyTVShows \
                         ${DOCKER_IMAGE}
                     """
                 }
