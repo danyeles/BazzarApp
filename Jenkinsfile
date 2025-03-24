@@ -10,10 +10,7 @@ pipeline {
         TZ = 'America/Monterrey'
         WEBUI_PORTS = '6767/tcp,6767/udp'
         CONFIG_PATH = '/home/docker/bazarr/config'
-        TVSHOWS_PATH = '/mnt/Media/TVShows'
-        MYSHOWS_PATH = '/mnt/Media/MyShows'
-        MOVIES_PATH = '/mnt/Media/Movies'
-        MYMOVIES_PATH = '/mnt/Media/MyMovies'
+        USERNAME = sh(script: 'echo $USER', returnStdout: true).trim()        
     }
 
     stages {
@@ -30,11 +27,11 @@ pipeline {
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
                         -e WEBUI_PORTS=${WEBUI_PORTS} \
-                        -v ${CONFIG_PATH}:/config \
-                        -v ${TVSHOWS_PATH}:/TVShows \
-                        -v ${MYSHOWS_PATH}:/MyShows \
-                        -v ${MOVIES_PATH}:/Movies \
-                        -v ${MYMOVIES_PATH}:/MyMovies \
+                        -v ${CONFIG_PATH}:/config \\
+                        -v /media/${USERNAME}/Media/Movies:/Movies \\
+                        -v /media/${USERNAME}/Media/MyMovies:/MyMovies \\
+                        -v /media/${USERNAME}/Media/TVShows:/TVShows \\                        
+                        -v /media/${USERNAME}/Media/MyTVShows:/MyTVShows \\
                         ${DOCKER_IMAGE}
                     """
                 }
